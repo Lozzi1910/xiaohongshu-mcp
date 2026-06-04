@@ -1,0 +1,101 @@
+Metadata-Version: 2.4
+Name: xhs-mcp-server
+Version: 0.1.0
+Summary: MCP Server for Xiaohongshu (小红书) — let AI search notes, read content, and publish via browser automation
+Author-email: Lozzi <Lozzi1910@users.noreply.github.com>
+License: AGPL-3.0-only
+Project-URL: homepage, https://github.com/Lozzi1910/xiaohongshu-mcp
+Project-URL: repository, https://github.com/Lozzi1910/xiaohongshu-mcp
+Keywords: mcp,xiaohongshu,小红书,social-media,automation
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Communications :: Chat
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: mcp>=1.0.0
+Requires-Dist: playwright>=1.40.0
+Requires-Dist: httpx>=0.25.0
+Requires-Dist: opencv-python-headless>=4.8.0
+Requires-Dist: numpy>=1.24.0
+Requires-Dist: pillow>=10.0.0
+
+# 小红书 MCP Server
+
+**让 AI 助手搜索、浏览、发布小红书笔记**
+
+[![AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-green.svg)](pyproject.toml)
+
+---
+
+## ✨ 功能
+
+| 功能 | MCP 工具 | 说明 |
+|------|----------|------|
+| 🔍 **搜索笔记** | `xhs_search(keyword, limit)` | 搜索小红书笔记，返回标题+链接 |
+| 📖 **获取笔记** | `xhs_get_note(url)` | 查看笔记详情、正文、评论 |
+| 📤 **发布笔记** | `xhs_publish(title, content, images)` | 发布图文笔记 |
+| 🔑 **扫码登录** | `xhs_login_qrcode()` | 获取二维码，手机扫码登录 |
+| ✅ **检查登录** | `xhs_check_login()` | 检查当前登录状态 |
+
+## 🚀 快速开始
+
+```bash
+# 1. 安装
+pip install -e .
+playwright install chromium
+
+# 2. 启动
+python -m xiaohongshu_mcp.server
+
+# 3. 配置到你的 MCP 客户端
+```
+
+### 扫码登录
+
+```bash
+# 启动后运行：
+xhs_login_qrcode()  # 获取二维码 → 小红书 App 扫码
+xhs_check_login()   # 确认已登录
+```
+
+## 🐳 Docker 部署
+
+```bash
+docker build -t xhs-mcp .
+docker run -d -p 6789:6789 -v $HOME/.xiaohongshu_mcp:/data xhs-mcp
+```
+
+## 💰 定价
+
+| 版本 | 价格 | 适用 |
+|------|------|------|
+| 🌟 个人版 | 免费 (AGPL-3.0) | 个人开发者 |
+| 💼 商业版 | ¥499 | 单项目商用 |
+| 🏢 企业版 | ¥2999 | 无限项目 + 优先支持 |
+
+## 📦 项目结构
+
+```
+xiaohongshu-mcp/
+├── xiaohongshu_mcp/
+│   ├── __init__.py
+│   ├── server.py      # FastMCP 入口 + 工具定义
+│   └── core.py        # Playwright 控制器
+├── data/              # 存储目录（cookies、二维码）
+├── pyproject.toml
+└── README.md
+```
+
+## 🔗 相关项目
+
+- [Douyin-mcp](https://github.com/Lozzi1910/Douyin-mcp) — 抖音私信 MCP
+- [WeChat-mcp](https://github.com/Lozzi1910/WeChat-mcp) — 微信消息 MCP
+
+## ⭐ Star 支持
+
+如果这个项目对你有帮助，欢迎 Star 支持！
