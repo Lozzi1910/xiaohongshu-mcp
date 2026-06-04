@@ -11,6 +11,9 @@
     3. xhs_search(keyword, limit) — 搜索小红书笔记
     4. xhs_get_note(url)         — 获取笔记详情和评论
     5. xhs_publish(title, content, images) — 发布图文笔记
+    6. xhs_like(url)             — 点赞/取消点赞笔记
+    7. xhs_comment(url, text)    — 评论笔记
+    8. xhs_user_profile(user_id) — 获取用户主页信息
 """
 from __future__ import annotations
 
@@ -95,12 +98,46 @@ async def xhs_publish(title: str, content: str, images: list[str]) -> str:
     """发布小红书图文笔记（需登录创作者平台）
 
     Args:
-        title: 笔记标题
-        content: 笔记正文
+        title: 笔记标题（不超过20字）
+        content: 笔记正文（不超过1000字）
         images: 图片本地路径列表
     """
     ctrl = _get_ctrl()
     return await ctrl.publish_note(title, content, images)
+
+
+@mcp.tool()
+async def xhs_like(url: str) -> str:
+    """点赞/取消点赞小红书笔记
+
+    Args:
+        url: 笔记链接
+    """
+    ctrl = _get_ctrl()
+    return await ctrl.like_note(url)
+
+
+@mcp.tool()
+async def xhs_comment(url: str, text: str) -> str:
+    """评论小红书笔记
+
+    Args:
+        url: 笔记链接
+        text: 评论内容
+    """
+    ctrl = _get_ctrl()
+    return await ctrl.comment_note(url, text)
+
+
+@mcp.tool()
+async def xhs_user_profile(user_id: str) -> str:
+    """获取小红书用户主页信息
+
+    Args:
+        user_id: 用户ID
+    """
+    ctrl = _get_ctrl()
+    return await ctrl.user_profile(user_id)
 
 
 # ── main ────────────────────────────────────────────────────────────────
