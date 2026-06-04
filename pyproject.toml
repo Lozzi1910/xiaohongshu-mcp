@@ -1,0 +1,42 @@
+[project]
+name = "xhs-mcp-server"
+version = "0.1.0"
+description = "MCP Server for Xiaohongshu (小红书) — let AI search notes, read content, and publish via browser automation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "AGPL-3.0-only"}
+authors = [
+    {name = "Lozzi", email = "Lozzi1910@users.noreply.github.com"},
+]
+keywords = ["mcp", "xiaohongshu", "小红书", "social-media", "automation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Communications :: Chat",
+]
+dependencies = [
+    "mcp>=1.0.0",
+    "playwright>=1.40.0",
+    "httpx>=0.25.0",
+    "opencv-python-headless>=4.8.0",
+    "numpy>=1.24.0",
+    "pillow>=10.0.0",
+]
+
+[project.urls]
+homepage = "https://github.com/Lozzi1910/xiaohongshu-mcp"
+repository = "https://github.com/Lozzi1910/xiaohongshu-mcp"
+
+[project.scripts]
+xhs-mcp = "xiaohongshu_mcp.server:main"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["xiaohongshu_mcp*"]
