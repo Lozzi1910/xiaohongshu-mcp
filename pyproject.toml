@@ -1,5 +1,5 @@
 [project]
-name = "xhs-mcp-server"
+name = "xhs-mcp-tool"
 version = "0.1.0"
 description = "MCP Server for Xiaohongshu (小红书) — let AI search notes, read content, and publish via browser automation"
 readme = "README.md"

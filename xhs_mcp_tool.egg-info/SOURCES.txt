@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+xhs_mcp_tool.egg-info/PKG-INFO
+xhs_mcp_tool.egg-info/SOURCES.txt
+xhs_mcp_tool.egg-info/dependency_links.txt
+xhs_mcp_tool.egg-info/entry_points.txt
+xhs_mcp_tool.egg-info/requires.txt
+xhs_mcp_tool.egg-info/top_level.txt
+xiaohongshu_mcp/__init__.py
+xiaohongshu_mcp/core.py
+xiaohongshu_mcp/server.py

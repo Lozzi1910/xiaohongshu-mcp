@@ -21,7 +21,7 @@
 
 ```bash
 # 1. 安装
-pip install -e .
+pip install xhs-mcp-tool
 playwright install chromium
 
 # 2. 启动
